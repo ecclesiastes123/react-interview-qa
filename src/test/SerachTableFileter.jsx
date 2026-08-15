@@ -110,8 +110,9 @@ export default function App() {
                         Prev
                     </button>
 
-                    {Array.from({ length: totalPages }, (_, index) => index + 1).map(
-                        (page) => (
+                    {[...Array(totalPages).keys()].map((i) => {
+                        const page = i + 1;
+                        return (
                             <button
                                 key={page}
                                 onClick={() => setCurrentPage(page)}
@@ -123,8 +124,8 @@ export default function App() {
                             >
                                 {page}
                             </button>
-                        )
-                    )}
+                        );
+                    })}
 
                     <button
                         onClick={() => setCurrentPage((prev) => prev + 1)}
